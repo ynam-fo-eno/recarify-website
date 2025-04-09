@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="illustration">
+            <img src="assets\one.png" alt="Illustration">
+        </div>
+        <div class="signup-form">
+
+            <div class="heading-with-icon">
+                <h2>Create new account</h2>
+                <img src="assets\logo.png" alt="Account Icon" class="heading-icon">
+            </div>
+
+            <form id="signupForm">
+                <div class="input-group">
+                    <label for="firstName"></label>
+                    <input type="text" id="firstName" placeholder="First Name" required>
+
+                    <label for="secondName"></label>
+                    <input type="text" id="secondName" placeholder="Second Name" required>
+
+                </div>
+                <input type="email" id="email" placeholder="Email" required>
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="Password" required>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                </div>
+                <p class="password-hint">Use 8 or more characters with a mix of letters, numbers & symbols</p>
+                <p class="birthday-gender">Enter your birthday & gender</p>
+                <div class="input-group">
+                    <label for="month"></label>
+                    <input type="text" id="month" placeholder="Month" required>
+                    <label for="day"></label>
+                    <input type="text" id="day" placeholder="Day" required>
+                    <label for="year"></label>
+                    <input type="text" id="year" placeholder="Year" required>
+
+                </div>
+                <select id="gender">
+                    <option>Rather not say</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p class="account">Already have an account? <a href="#">Log in here</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById('firstName').value.trim();
+            const secondName = document.getElementById('secondName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const month = document.getElementById('month').value.trim();
+            const day = document.getElementById('day').value.trim();
+            const year = document.getElementById('year').value.trim();
+
+            if (password.length < 8) {
+                alert('Password must be at least 8 characters long.');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            if (isNaN(day) || isNaN(year) || day < 1 || day > 31 || year.length !== 4 || month < 1 || month > 12) {
+
+                alert('Please enter a valid birth date.');
+                return;
+            }
+
+            alert('Sign-up successful!');
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>

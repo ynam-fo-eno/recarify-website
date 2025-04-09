@@ -13,6 +13,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     $username = validate($_POST['username']);    
     $password = validate($_POST['password']);   
+    $password = md5($password);
     //1st inner if to test first empty input... 
     if (empty($username)) {        
         header("Location: index.php?error=User Name is required");        
